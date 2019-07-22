@@ -9,19 +9,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class NewsController extends Controller
 {
     /**
-     * @Route("/news", name="news_list")
-     */
-    public function indexAction()
-    {
-        die('indexAction');
-    }
-
-    /**
      * @Route("/news/{slug}", name="news_item")
      */
     public function showAction($slug)
     {
-        die($slug);
+        $news = $this->getDoctrine()
+                     ->getRepository('AppBundle:News')
+                     ->findOneBy(array('slug' => $slug));
+
+        return $this->render('default/show.html.twig', [
+            'news' => $news,
+        ]);
     }
 
 }

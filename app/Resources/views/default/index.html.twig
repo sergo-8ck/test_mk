@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Home Page</h1>
-    Test $a = {{ a }}
+    <h1>News List</h1>
+    <ul>
+        {% for news in newses %}
+            <li>
+                <a href="{{ path('news_item', {slug: news.slug}) }}">{{ news.id }}. {{ news.title }}</a>
+            </li>
+
+        {% endfor %}
+    </ul>
+
 {% endblock %}

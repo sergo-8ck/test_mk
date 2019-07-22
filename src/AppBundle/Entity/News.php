@@ -31,16 +31,23 @@ class News
     /**
      * @var string
      *
-     * @ORM\Column(name="body", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $body;
+    private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      */
-    private $date;
+    private $createdAt;
 
 
     /**
@@ -78,51 +85,75 @@ class News
     }
 
     /**
-     * Set body
+     * Set slug
      *
-     * @param string $body
+     * @param string $slug
      *
      * @return News
      */
-    public function setBody($body)
+    public function setSlug($slug)
     {
-        $this->body = $body;
+        $this->slug = $slug;
 
         return $this;
     }
 
     /**
-     * Get body
+     * Get slug
      *
      * @return string
      */
-    public function getBody()
+    public function getSlug()
     {
-        return $this->body;
+        return $this->slug;
     }
 
     /**
-     * Set date
+     * Set description
      *
-     * @param \DateTime $date
+     * @param string $description
      *
      * @return News
      */
-    public function setDate($date)
+    public function setDescription($description)
     {
-        $this->date = $date;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get date
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return News
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
      *
      * @return \DateTime
      */
-    public function getDate()
+    public function getCreatedAt()
     {
-        return $this->date;
+        return $this->createdAt;
     }
 }
 

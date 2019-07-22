@@ -13,10 +13,12 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $a = '123456789';
-        // replace this example code with whatever you need
+        $news = $this->getDoctrine()
+                     ->getRepository('AppBundle:News')
+                     ->findAll();
+
         return $this->render('default/index.html.twig', [
-            'a' => $a,
+            'newses' => $news,
         ]);
     }
 }
