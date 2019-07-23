@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -74,6 +75,8 @@ class News
     public function setTitle($title)
     {
         $this->title = $title;
+        $slugify = (new Slugify())->slugify($title);
+        $this->setSlug($slugify);
 
         return $this;
     }
